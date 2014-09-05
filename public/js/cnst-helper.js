@@ -1,4 +1,5 @@
 (function(app) {
+	app = app || {};
   app.cnst = {};
 
   // REQ
