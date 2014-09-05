@@ -1,3 +1,4 @@
+// https://developers.facebook.com/docs/facebook-login/login-flow-for-web/v2.1
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
   console.log('statusChangeCallback');
@@ -8,7 +9,7 @@ function statusChangeCallback(response) {
   // for FB.getLoginStatus().
   if (response.status === 'connected') {
     // Logged into your app and Facebook.
-    testAPI();
+    testAPI(response.authResponse);
   } else if (response.status === 'not_authorized') {
     // The person is logged into Facebook, but not your app.
     document.getElementById('status').innerHTML = 'Please log ' +
@@ -69,11 +70,20 @@ window.fbAsyncInit = function() {
 
 // Here we run a very simple test of the Graph API after login is
 // successful.  See statusChangeCallback() for when this call is made.
-function testAPI() {
+// authResponse: {
+//         accessToken: '...',
+//         expiresIn:'...',
+//         signedRequest:'...',
+//         userID:'...'
+//  }
+function testAPI(authResponse) {
+  // send an accessToken, expiresIn, userID to the VMG server
+  //developers.facebook.com/docs/facebook-login/access-tokens
+  console.log(authResponse);
+  // return an user name
   console.log('Welcome!  Fetching your information.... ');
   FB.api('/me', function(response) {
     console.log('Successful login for: ' + response.name);
-    document.getElementById('status').innerHTML =
-      'Thanks for logging in, ' + response.name + '!';
+    document.getElementById('status').innerHTML = 'Welcome ' + response.name + '!';
   });
 }

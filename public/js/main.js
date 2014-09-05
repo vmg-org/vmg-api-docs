@@ -1,10 +1,6 @@
 $(function() {
   var app = window.wfm;
 
-  if (!app.authHelper) {
-    throw new Error('required app-auth');
-  }
-
   if (!app.lgr) {
     throw new Error('required lgr-helper');
   }
@@ -53,7 +49,4 @@ $(function() {
   });
 
   window.swaggerUi.load();
-
-  $('#login-btn').on('click', app.authHelper.clickLoginBtn);
-  $('#logout-btn').on('click', app.authHelper.clickLogoutBtn);
 });
