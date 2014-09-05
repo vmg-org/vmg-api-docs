@@ -2,6 +2,16 @@
 
   window.S3Upload = (function() {
 
+    function S3Upload(options) {
+      options = options || {};
+      
+      for (var option in options) {
+        this[option] = options[option];
+      }
+
+      this.handleFileSelect(document.getElementById(this.file_dom_selector));
+    }
+
     S3Upload.prototype.s3_object_name = 'default_name';
 
     S3Upload.prototype.s3_sign_put_url = '/signS3put';
@@ -19,14 +29,6 @@
     S3Upload.prototype.onError = function(status) {
       return console.log('base.onError()', status);
     };
-
-    function S3Upload(options) {
-      if (options == null) options = {};
-      for (option in options) {
-        this[option] = options[option];
-      }
-      this.handleFileSelect(document.getElementById(this.file_dom_selector));
-    }
 
     S3Upload.prototype.handleFileSelect = function(file_element) {
       var f, files, output, _i, _len, _results;
