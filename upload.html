@@ -1,0 +1,18 @@
+<html>
+<body>
+  <p>
+    Direct uploading to cloud storage. Cloud storage is secured and required a specific sign for authorization.
+    This client makes two requests during file upload process:
+  </p>
+  <ol>
+    <li>Get a signed url from a web server (check an auth user, create a sign from an access key, secret key and other parameters)</li>
+    <li>Upload a file to this url (directly to cloud storage). The url is valid only 10 seconds after received.</li>
+  </ol>
+  <p id="status">Please select a file (upload process begins immediately)</p>
+  <input type="file" id="files"/>
+  <script>window.wfm = {};</script>
+  <script src="js/cnst-helper.js"></script>
+  <script src="/js/s3upload.js"></script>
+  <script src="/js/upload-main.js"></script>
+</body>
+</html>

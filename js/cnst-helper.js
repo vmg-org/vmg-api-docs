@@ -1,4 +1,6 @@
 (function(app) {
+	// In 3rd side libs - need only constants
+  app = app || {};
   app.cnst = {};
 
   // REQ
