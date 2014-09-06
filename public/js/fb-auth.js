@@ -12,13 +12,13 @@ function statusChangeCallback(response) {
     testAPI(response.authResponse);
   } else if (response.status === 'not_authorized') {
     // The person is logged into Facebook, but not your app.
-    document.getElementById('status').innerHTML = 'Please log ' +
-      'into this app.';
+    document.getElementById('status').innerHTML = '';
+    //	    'Please log ' +     'into this app.';
   } else {
     // The person is not logged into Facebook, so we're not sure if
     // they are logged into this app or not.
-    document.getElementById('status').innerHTML = 'Please log ' +
-      'into Facebook.';
+    document.getElementById('status').innerHTML = '';
+    //'Please log ' + 'into Facebook.';
   }
 }
 
@@ -81,9 +81,12 @@ function testAPI(authResponse) {
   //developers.facebook.com/docs/facebook-login/access-tokens
   console.log(authResponse);
   // return an user name
-  console.log('Welcome!  Fetching your information.... ');
-  FB.api('/me', function(response) {
-    console.log('Successful login for: ' + response.name);
-    document.getElementById('status').innerHTML = 'Welcome ' + response.name + '!';
-  });
+  $('.logon-wrap').hide();
+  $('.logoff-wrap').show();
+  $('#status').html('Welcome');
+  //  console.log('Welcome!  Fetching your information.... ');
+  // FB.api('/me', function(response) {
+  //  console.log('Successful login for: ' + response.name);
+  // document.getElementById('status').innerHTML = 'Welcome ' + response.name + '!';
+  // });
 }

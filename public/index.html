@@ -2,59 +2,78 @@
 <html>
 
 <head>
-    <title>API documentation</title>
-    <!-- 
+  <title>API documentation</title>
+  <meta name="google-signin-clientid" content="885478038448-is0ieelv96rlokn5dmn6ltt9v8hfap5n.apps.googleusercontent.com"
+  />
+  <!--https://www.googleapis.com/auth/plus.login -->
+  <meta name="google-signin-scope" content="profile" />
+  <!--  <meta name="google-signin-requestvisibleactions" content="http://schema.org/AddAction"  /> -->
+  <meta name="google-signin-cookiepolicy" content="single_host_origin" />
+  <!-- 
   <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'/>
   -->
-    <link href='css/reset.css' media='screen' rel='stylesheet' type='text/css' />
-    <link href='css/screen.css' media='screen' rel='stylesheet' type='text/css' />
-    <link href='css/other.css' media='screen' rel='stylesheet' type='text/css' />
-    <link href='css/reset.css' media='print' rel='stylesheet' type='text/css' />
-    <link href='css/screen.css' media='print' rel='stylesheet' type='text/css' />
-    <link href='css/other.css' media='print' rel='stylesheet' type='text/css' />
-    <script src='lib/shred.bundle.js'></script>
-    <script src='lib/jquery-1.8.0.min.js'></script>
-    <script src='lib/jquery.slideto.min.js'></script>
-    <script src='lib/jquery.wiggle.min.js'></script>
-    <script src='lib/jquery.ba-bbq.min.js'></script>
-    <script src='lib/handlebars-1.0.0.js'></script>
-    <script src='lib/underscore-min.js'></script>
-    <script src='lib/backbone-min.js'></script>
-    <script src='lib/swagger.js'></script>
-    <script src='./swagger-ui.js'></script>
-    <script src='lib/highlight.7.3.pack.js'></script>
+  <link href='css/reset.css' media='screen' rel='stylesheet' type='text/css' />
+  <link href='css/screen.css' media='screen' rel='stylesheet' type='text/css' />
+  <link href='css/other.css' media='screen' rel='stylesheet' type='text/css' />
+  <link href='css/reset.css' media='print' rel='stylesheet' type='text/css' />
+  <link href='css/screen.css' media='print' rel='stylesheet' type='text/css' />
+  <link href='css/other.css' media='print' rel='stylesheet' type='text/css' />
+  <style>
+    .logon-wrap {
+      float: right;
+      margin: 0 8px;
+    }
+    .logoff-wrap {
+      float: right;
+      margin: 0 8px;
+    }
+  </style>
+  <script src='lib/shred.bundle.js'></script>
+  <script src='lib/jquery-1.8.0.min.js'></script>
+  <script src='lib/jquery.slideto.min.js'></script>
+  <script src='lib/jquery.wiggle.min.js'></script>
+  <script src='lib/jquery.ba-bbq.min.js'></script>
+  <script src='lib/handlebars-1.0.0.js'></script>
+  <script src='lib/underscore-min.js'></script>
+  <script src='lib/backbone-min.js'></script>
+  <script src='lib/swagger.js'></script>
+  <script src='./swagger-ui.js'></script>
+  <script src='lib/highlight.7.3.pack.js'></script>
 
-    <!-- enabling this will enable oauth2 implicit scope support -->
-    <!--   <script src='lib/swagger-oauth.js' type='text/javascript'></script> -->
+  <!-- enabling this will enable oauth2 implicit scope support -->
+  <!--   <script src='lib/swagger-oauth.js' type='text/javascript'></script> -->
 
-    <!-- app scripts -->
-    <script>
-        window.wfm = {};
-    </script>
-    <script src="js/cnst-helper.js"></script>
-    <script src="js/lgr-helper.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/fb-auth.js"></script>
+  <!-- app scripts -->
+  <script>
+    window.wfm = {};
+  </script>
+  <script src="js/cnst-helper.js"></script>
+  <script src="js/lgr-helper.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/fb-auth.js"></script>
+  <script src="js/goog-auth.js"></script>
 </head>
 
 <body class="swagger-section">
-    <div id="header">
-        <div class="swagger-ui-wrap">
-            <a id="logo" href="/">API documentation</a>
-            <div style="display: inline-block; float:right">
-                <!--
-		      Below we include the Login Button social plugin. This button uses
-		        the JavaScript SDK to present a graphical Login button that triggers
+  <div id="header">
+    <div class="swagger-ui-wrap">
+      <a id="logo" href="/">API documentation</a>
+      <div class="logon-wrap">
+        <button id="goog-sign-btn">Google sign-in</button>
+      </div>
+      <div class="logon-wrap">
+        <!--
+         Below we include the Login Button social plugin. This button uses
+         the JavaScript SDK to present a graphical Login button that triggers
 			  the FB.login() function when clicked.-->
-
-                <fb:login-button scope="public_profile" onlogin="checkLoginState();">
-                </fb:login-button>
-
-                <div id="status" style="color: white">
-                </div>
-
-            </div>
-            <!--      <div style="display: inline-block; float: right">
+        <fb:login-button scope="public_profile" onlogin="checkLoginState();">
+        </fb:login-button>
+      </div>
+      <div class="logoff-wrap">
+        <div id="status" style="color: white">
+        </div>
+      </div>
+      <!--      <div style="display: inline-block; float: right">
         <div id="login-false-block">
           <button class="btn" id="login-btn" type="button">Sign in</button>
         </div>
@@ -63,11 +82,10 @@
           <button class="btn" id="logout-btn" type="button">Sign out</button>
         </div>
       </div> -->
-        </div>
     </div>
-
-    <div id="message-bar" class="swagger-ui-wrap">&nbsp;</div>
-    <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
+  </div>
+  <div id="message-bar" class="swagger-ui-wrap">&nbsp;</div>
+  <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
 </body>
 
 </html>
