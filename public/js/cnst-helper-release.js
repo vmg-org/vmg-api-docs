@@ -4,7 +4,8 @@
   app.cnst = {};
 
   // REQ
-  app.cnst.API_URI = 'https://video-merge.herokuapp.com';
+  app.cnst.API_URI = 'http://ec2-54-77-111-21.eu-west-1.compute.amazonaws.com';
+	//'https://video-merge.herokuapp.com';
 
   app.cnst.SESSION_ENDPOINT = app.cnst.API_URI + '/api/account/session';
 
