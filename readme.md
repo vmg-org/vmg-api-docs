@@ -34,3 +34,11 @@ expiresIn: 6553
 signedRequest: "h3lFiwWvCoYM-veh984qTZlJPo8wmWrjXYqaflOPFDc.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImNvZGUiOiJBUUFENDFhV0wtS0RfUHVNUk5UNlppdFNzdFNLVjNtTjBNQk9Nel9fVlAyd0Y5am1ZSmxrTUgxOUtwdmZaVVM2Wko4TjR0ZjltcVozWU1KRkVfa0xCaVNPSnBwVGwwZzhJVVB1aXVpRTNveHNUdnpMbVgzQUtHUDNSX1NDYUJ2SXc5WWRaUXZUc0tId1gzTWN3YkdPVjNPOGcweVpEWHdhRnhuZFJCSWc5T05mOWdGZ0RiMEpRQXV6RGt1SVlVb095QVU0OTc2aVdJeWpuTmFvVW1yLVJpUjJEUzc0bmdzSUs4VUg4WlBVOXBCbFoycUNxbUw5X2lQQnZoMGNaTWFhanpSNTE1QmdaQnZxSzRuSENqRG1hcl90YXhLQkJVbFROZ2owMmxxREZfMi1qTTJIb3hwQTdGNVhfeTB1MGpjMkROcThPem9oWTJJZkN3RFVhT2tTX1E2VCIsImlzc3VlZF9hdCI6MTQxMDAwOTA0NywidXNlcl9pZCI6IjkzNzc3MjExOTU3MzUxNiJ9"
 userID: "937772119573516"
 
+{
+   "error": {
+      "message": "Error validating access token: Session has expired on Sep 5, 2014 12:00pm. The current time is Sep 15, 2014 1:23am.",
+      "type": "OAuthException",
+      "code": 190,
+      "error_subcode": 463
+   }
+}

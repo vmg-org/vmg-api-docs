@@ -10,7 +10,7 @@ var filePath = {
     src: './*.js'
   },
   jshintApp: {
-    src: ['public/js/**/*.js']
+    src: ['public/my-scripts/**/*.js']
   },
   jshintTest: {
     src: 'test/**/*.js'
@@ -28,7 +28,7 @@ gulp.task('default', function() {
     .pipe(jshint.reporter(jshintReporter));
 
   gulp.src(filePath.jshintApp.src)
-    .pipe(jshint('./public/js/.jshintrc'))
+    .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter(jshintReporter));
 });
 
@@ -50,8 +50,8 @@ gulp.task('copySource', ['clean'], function() {
 });
 
 gulp.task('renameConfig', ['clean', 'copySource'], function() {
-  return gulp.src(filePath.app.dst + 'js/cnst-helper-release.js')
-    .pipe(rename('js/cnst-helper.js'))
+  return gulp.src(filePath.app.dst + 'my-scripts/cnst-release.js')
+    .pipe(rename('my-scripts/cnst.js'))
     .pipe(gulp.dest(filePath.app.dst));
 });
 
