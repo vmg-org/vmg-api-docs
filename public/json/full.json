@@ -1,0 +1,136 @@
+{
+  "swagger": 2.0,
+  "info": {
+    "description": "This is a sample server Petstore server.  You can find out more about Swagger at <a href=\"http://swagger.wordnik.com\">http://swagger.wordnik.com</a> or on irc.freenode.net, #swagger.  For this sample, you can use the api key \"special-key\" to test the authorization filters",
+    "version": "1.0.0",
+    "title": "Swagger Petstore",
+    "termsOfService": "http://helloreverb.com/terms/",
+    "contact": {
+      "name": "apiteam@wordnik.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "schemes": ["http", "https"],
+  "paths": {
+    "/auth-issuers": {
+      "get": {
+        "operationId": "getListOfAuthIssuer",
+        "tags": ["auth-issers"],
+        "summary": "Get auth providers",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/auth_issuer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/movie-templates": {
+      "post": {
+        "operationId": "postMovieTemplate",
+        "tags": ["movie-templates"],
+        "summary": "Create a template for a movie",
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "Data for a movie template",
+          "schema": {
+            "$ref": "$/definitions/movie_template"
+          },
+          "required": true
+        }],
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/movie_template"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        },
+        "security": {}
+      },
+      "get": {
+        "operationId": "getListOfMovieTemplate",
+        "tags": ["movie-templates"],
+        "summary": "Get all movie templates",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/movie_template"
+              }
+            }
+          }
+        },
+        "security": {}
+      }
+    }
+  },
+  "definitions": {
+    "movie_template": {
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Id of movie template",
+          "required": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of movie (template)",
+          "required": true,
+          "maxLength": 255
+        },
+        "duration_of_episodes": {
+          "type": "integer",
+          "description": "Duration of each episode",
+          "required": true
+        },
+        "count_of_episodes": {
+          "type": "integer",
+          "description": "Count of episodes in movie",
+          "required": true
+        }
+      }
+    },
+    "auth_issuer": {
+      "primaryKey": "id",
+      "properties": {
+        "id": {
+          "type": "string",
+          "required": true,
+          "maxLength": 10,
+          "description": "Id of auth issuer, like goog or fb"
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "maxLength": 50,
+          "description": "Display name of an issuer, like Google or Facebook"
+        },
+        "url": {
+          "type": "string",
+          "required": true,
+          "maxLength": 255,
+          "description": "Main url of an issuer"
+        }
+      }
+    }
+  }
+}
