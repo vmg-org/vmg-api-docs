@@ -16,6 +16,7 @@
     "gulp-gh-pages": "^0.3.3",
     "gulp-jshint": "^1.8.4",
     "gulp-rename": "^1.2.0",
-    "jshint-stylish": "^0.2.0"
+    "jshint-stylish": "^0.2.0",
+    "vmg-spec": "git://github.com/vmg-org/vmg-spec"
   }
 }
