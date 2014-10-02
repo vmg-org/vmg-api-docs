@@ -4,7 +4,8 @@ var jshintReporter = require('jshint-stylish');
 var ghPages = require('gulp-gh-pages');
 var del = require('del');
 var rename = require('gulp-rename');
-
+var exec = require('child_process').exec;
+var gitLog = require('git-log');
 var filePath = {
   jshintBase: {
     src: './*.js'
@@ -61,4 +62,22 @@ gulp.task('build', ['renameConfig']);
 // https://github.com/rowoot/gulp-gh-pages
 gulp.task('gh-pages', function() {
   gulp.src(filePath.app.dst + "**/*").pipe(ghPages());
+});
+
+gulp.task('gitlog', function(done) {
+  var tmpFilePath = 'doc/log-tmp.log';
+  var logFilePath = 'doc/log-201409.log';
+  var afterDate = new Date(2014, 8, 2); //new Date(Date.now() - (1000 * 60 * 60 * 24));
+  var beforeDate = new Date(2014, 9, 1);
+
+  var shellCommand = 'git log ' + gitLog.generateArgs(afterDate, beforeDate, tmpFilePath).join(' ');
+  console.log(shellCommand);
+
+  exec(shellCommand, function(err) {
+    if (err) {
+      return done(err);
+    }
+
+    gitLog.createLog(tmpFilePath, logFilePath, done);
+  });
 });

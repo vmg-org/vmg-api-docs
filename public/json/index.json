@@ -130,11 +130,22 @@
           "maxLength": 255,
           "description": "Main url of an issuer"
         },
-        "list_of_social_profile": {
+        "arr_social_profile": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/social_profile"
+            "$ref": "social_profile"
           }
+        }
+      }
+    },
+    "social_profile": {
+      "primaryKey": "id",
+      "properties": {
+        "id": {
+          "type": "string",
+          "required": true,
+          "maxLength": 8000,
+          "description": "Id of a social profiles, usually iss_snid"
         }
       }
     }
