@@ -3,6 +3,7 @@ var jshint = require('gulp-jshint');
 var jshintReporter = require('jshint-stylish');
 var ghPages = require('gulp-gh-pages');
 var del = require('del');
+var express = require('express');
 var rename = require('gulp-rename');
 var exec = require('child_process').exec;
 var gitLog = require('git-log');
@@ -54,6 +55,16 @@ gulp.task('renameConfig', ['clean', 'copySource'], function() {
   return gulp.src(filePath.app.dst + 'my-scripts/cnst-release.js')
     .pipe(rename('my-scripts/cnst.js'))
     .pipe(gulp.dest(filePath.app.dst));
+});
+
+gulp.task('connect', function() {
+  var app = express();
+
+  app.use(express.static('public'));
+
+  app.listen(39393, function() {
+    console.log('http://localhost:39393/');
+  });
 });
 
 // Auto clean and copy all files
