@@ -1,23 +1,23 @@
 {
   "name": "vmg-api-docs",
-  "version": "0.1.0",
-  "description": "Video merging API docs",
-  "main": "index.js",
+  "version": "0.3.0",
+  "description": "API docs for a vmg project",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "IvanRave",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.7.4"
+    "express": "*"
   },
   "devDependencies": {
-    "gulp": "^3.8.7",
-    "gulp-gh-pages": "^0.3.3",
-    "del": "^0.1.3",
-    "gulp-jshint": "^1.8.4",
-    "gulp-rename": "^1.2.0",
-    "jshint-stylish": "^0.2.0",
+    "gulp": "*",
+    "gulp-gh-pages": "*",
+    "del": "*",
+    "gulp-jshint": "*",
+    "jshint": "*",
+    "gulp-rename": "*",
+    "jshint-stylish": "*",
     "git-log": "git://github.com/IvanRave/git-log.git",
     "vmg-spec": "git://github.com/vmg-org/vmg-spec"
   }

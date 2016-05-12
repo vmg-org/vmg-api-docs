@@ -24,7 +24,7 @@ var filePath = {
   }
 };
 
-gulp.task('default', function() {
+gulp.task('jshint', function() {
   gulp.src(filePath.jshintBase.src)
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter(jshintReporter));
@@ -34,24 +34,24 @@ gulp.task('default', function() {
     .pipe(jshint.reporter(jshintReporter));
 });
 
-gulp.task('test', function() {
-  gulp.src(filePath.jshintTest.src)
+gulp.task('jshint-test', function() {
+  return gulp.src(filePath.jshintTest.src)
     .pipe(jshint('./test/.jshintrc'))
     .pipe(jshint.reporter(jshintReporter));
 });
 
 /** Clean destination folder */
 gulp.task('clean', function(cb) {
-  del([filePath.app.dst], cb);
+  return del([filePath.app.dst], cb);
 });
 
 // Copy all static files
-gulp.task('copySource', ['clean'], function() {
+gulp.task('copy-source', ['clean'], function() {
   return gulp.src(filePath.app.src + '**/*')
     .pipe(gulp.dest(filePath.app.dst));
 });
 
-gulp.task('renameConfig', ['clean', 'copySource'], function() {
+gulp.task('rename-config', ['clean', 'copy-source'], function() {
   return gulp.src(filePath.app.dst + 'my-scripts/cnst-release.js')
     .pipe(rename('my-scripts/cnst.js'))
     .pipe(gulp.dest(filePath.app.dst));
@@ -68,7 +68,7 @@ gulp.task('connect', function() {
 });
 
 // Auto clean and copy all files
-gulp.task('build', ['renameConfig']);
+gulp.task('build', ['rename-config']);
 
 // https://github.com/rowoot/gulp-gh-pages
 gulp.task('gh-pages', function() {
@@ -86,7 +86,7 @@ gulp.task('gitlog', function(done) {
 
   exec(shellCommand, function(err) {
     if (err) {
-      return done(err);
+      done(err); return;
     }
 
     gitLog.createLog(tmpFilePath, logFilePath, done);
