@@ -1,3 +1,0 @@
-index.html	29	change url to api
-index.html	25	add cnst script
-index.html	0	remove icons

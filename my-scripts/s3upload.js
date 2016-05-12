@@ -1,10 +1,9 @@
 (function() {
-
   window.S3Upload = (function() {
 
     function S3Upload(options) {
       options = options || {};
-      
+
       for (var option in options) {
         this[option] = options[option];
       }
@@ -61,7 +60,9 @@
       var this_s3upload, xhr;
       this_s3upload = this;
       xhr = new XMLHttpRequest();
-      console.log({file: file});
+      console.log({
+        file: file
+      });
       xhr.open('GET', this.s3_sign_put_url + '?s3_object_type=' + file.type + '&s3_object_name=' + this.s3_object_name, true);
       xhr.overrideMimeType('text/plain; charset=x-user-defined');
       xhr.onreadystatechange = function(e) {

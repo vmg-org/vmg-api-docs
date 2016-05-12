@@ -1,0 +1,75 @@
+{
+  "apiVersion": 1,
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000/api",
+  "resourcePath": "/container-formats",
+  "description": "multimedia container formats",
+  "produces": ["application/json", "application/x-www-form-urlencoded", "application/xml"],
+  "consumes": ["application/json", "application/x-www-form-urlencoded", "application/xml"],
+  "apis": [{
+    "path": "/container-formats",
+    "operations": [{
+      "nickname": "createContainerFormat",
+      "method": "POST",
+      "type": "container_format",
+      "summary": "Create a multimedia container format",
+      "parameters": [{
+        "name": "body",
+        "description": "Container format to create",
+        "type": "container_format",
+        "required": true,
+        "paramType": "body"
+      }],
+      "responseMessages": []
+    }]
+  }, {
+    "path": "/container-formats/{idOfContainerFormat}",
+    "operations": [{
+      "nickname": "getContainerFormat",
+      "method": "GET",
+      "type": "container_format",
+      "summary": "Get a multimedia container format by id",
+      "parameters": [{
+        "name": "idOfContainerFormat",
+        "description": "Id of a multimedia container format",
+        "type": "string",
+        "required": true,
+        "paramType": "path"
+      }],
+      "responseMessages": []
+    }]
+  }, {
+    "path": "/container-formats",
+    "operations": [{
+      "nickname": "getListOfContainerFormat",
+      "method": "GET",
+      "type": "array",
+      "items": {
+        "$ref": "container_format"
+      },
+      "summary": "Get all multimedia container formats",
+      "parameters": [],
+      "responseMessages": []
+    }]
+  }],
+  "models": {
+    "container_format": {
+      "id": "container_format",
+      "primaryKey": "id",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Id of multimedia container format",
+          "required": true,
+          "maxLength": 25
+        },
+        "description": {
+          "type": "string",
+          "description": "Description",
+          "required": true,
+          "maxLength": 8000
+        }
+      }
+    }
+  }
+}
