@@ -19,8 +19,7 @@ var filePath = {
   },
   app: {
     src: './public/',
-    dst: './dst/',
-    dev: './dev/'
+    dst: './dst/'
   }
 };
 
@@ -72,7 +71,7 @@ gulp.task('build', ['rename-config']);
 
 // https://github.com/rowoot/gulp-gh-pages
 gulp.task('gh-pages', function() {
-  gulp.src(filePath.app.dst + "**/*").pipe(ghPages());
+  return gulp.src(filePath.app.dst + "**/*").pipe(ghPages());
 });
 
 gulp.task('gitlog', function(done) {
